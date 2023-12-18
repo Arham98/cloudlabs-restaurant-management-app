@@ -8,7 +8,11 @@ function NavBar({ url }) {
   return (
     <Navbar className="justify-content-start fixed-top navbar-color" variant="dark" expand="lg">
       <Container fluid>
-        <Navbar.Brand className="text-navbar-title"><b>Todo List</b></Navbar.Brand>
+        <Navbar.Brand className="text-navbar-title">
+          <Nav.Link className="text-navbar" href="/menu">
+            <h1><b>Todo List</b></h1>
+          </Nav.Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" />

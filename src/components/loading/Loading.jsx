@@ -1,30 +1,19 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import CardList from '../CardList';
+import Spinner from 'react-bootstrap/Spinner';
 
 function Loading() {
-  const list = [];
-  let i = 0;
-  while (i < 10) {
-    list.push({ id: i });
-    i += 1;
-  }
-  const loadData = {
-    todoList: list,
-  };
-
   return (
-    <Container>
-      <Col className="align-items-center">
-        <Row style={{ paddingTop: '10px' }}>
-          <h1 className="header1-design">ToDo List</h1>
-        </Row>
-        <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-          <CardList data={loadData} type="loader" />
-        </Row>
-      </Col>
+    <Container fluid>
+      <Container className="center-container">
+        <div>
+          <Spinner className="spinner-border-1" animation="grow" style={{ color: '#FC4A1F' }} />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <Spinner className="spinner-border-2" animation="grow" style={{ color: '#FC4A1F' }} />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <Spinner className="spinner-border-3" animation="grow" style={{ color: '#FC4A1F' }} />
+        </div>
+      </Container>
     </Container>
   );
 }

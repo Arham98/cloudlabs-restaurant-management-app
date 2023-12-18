@@ -10,8 +10,7 @@ export default function useFetch(backendOperation, queryAttributesStr) {
 
   useEffect(() => {
     // Extracting API key and endpoint URL from the keys.json file
-    const { backendIp, backendPort } = keys;
-    const baseUrl = `http://${backendIp}:${backendPort}`;
+    const { backendUrl, proxyUrl } = keys;
 
     // Changing loading and success state to true whenever there's an effect
     setLoading(true);
@@ -26,42 +25,46 @@ export default function useFetch(backendOperation, queryAttributesStr) {
     // Function to construct and return the URL with
     // the required query parameters
     function getURLQuery(operation, inputData) {
-      const id = Math.floor(Math.random() * (999999 - 100 + 1) + 100);
-      if (operation === 'allItems' || operation === 'clearItems') {
+      const queryParameters = new URLSearchParams(inputData);
+      if (operation === 'getAllItems') {
+        const endpointUrl = new URL(`${backendUrl}/items`);
         return {
-          url: `${baseUrl}/${operation}`,
+          url: endpointUrl.toString(),
           method: 'GET',
-          body: null,
+        };
+      }
+      if (operation === 'getItem') {
+        const endpointUrl = new URL(`${backendUrl}/items/${inputData.id}`);
+        return {
+          url: endpointUrl.toString(),
+          method: 'GET',
         };
       }
       if (operation === 'addItem') {
+        const endpointUrl = new URL(`${backendUrl}/items`);
+        endpointUrl.search = queryParameters;
         return {
-          url: `${baseUrl}/${operation}`,
-          method: 'POST',
-          body: {
-            id,
-            task: inputData.task,
-          },
+          url: endpointUrl.toString(),
+          method: 'PUT',
         };
       }
       if (operation === 'editItem') {
+        const endpointUrl = new URL(`${backendUrl}/items/${inputData.id}`);
+        endpointUrl.search = queryParameters;
         return {
-          url: `${baseUrl}/${operation}`,
-          method: 'POST',
-          body: {
-            id: inputData.id,
-            task: inputData.task,
-          },
+          url: endpointUrl.toString(),
+          method: 'PATCH',
         };
       }
-      if (operation === 'removeItem' || operation === 'changeItemStatus') {
+      if (operation === 'deleteItem') {
+        const endpointUrl = new URL(`${backendUrl}/items/${inputData.id}`);
         return {
-          url: `${baseUrl}/${operation}/${inputData.id}`,
-          method: 'GET',
+          url: endpointUrl.toString(),
+          method: 'DELETE',
         };
       }
       return {
-        url: baseUrl,
+        url: backendUrl,
         method: 'GET',
       };
     }
@@ -89,7 +92,7 @@ export default function useFetch(backendOperation, queryAttributesStr) {
         };
 
         // Making API call through custom proxy server
-        const response = await fetch(backendUrlObject.url, options);
+        const response = await fetch(`${proxyUrl}/proxy/${backendUrlObject.url}`, options);
 
         // Checking if the request was a success
         setSuccess(response.ok);

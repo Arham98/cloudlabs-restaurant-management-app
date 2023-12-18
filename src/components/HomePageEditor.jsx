@@ -6,13 +6,26 @@ import Button from 'react-bootstrap/Button';
 import PageError from './errorPages/PageError';
 import Loading from './loading/Loading';
 import useFetch from '../hooks/useFetch';
-// import CardList from './CardList';
-// import NewItemForm from './NewItemForm';
+import Categorizer from './Categorizer';
+import NewItemForm from './NewItemForm';
 
-export default function HomePage() {
+export default function HomePageEditor() {
   const [action, setAction] = useState('getAllItems');
+  const [name, setName] = useState('');
+  const [imageLink, setImageLink] = useState('');
+  const [category, setCategory] = useState('');
+  const [info, setInfo] = useState('');
+  const [price, setPrice] = useState(0);
+  const [id, setId] = useState('');
 
-  const queryParams = {};
+  const queryParams = {
+    name: `${name}`,
+    imageLink: `${imageLink}`,
+    category: `${category}`,
+    info: `${info}`,
+    id: `${id}`,
+    price,
+  };
 
   // Initializing API Call with a useFetch function
   const {
@@ -46,7 +59,7 @@ export default function HomePage() {
     return (
       <PageError errorMessage="Oops! Something went wrong" />
     );
-  } if (!itemData.todoList) {
+  } if (!itemData.length) {
     return (
       <Container className="center-container">
         <pre>
@@ -59,29 +72,46 @@ export default function HomePage() {
     <Container>
       <Col className="align-items-center">
         <Row style={{ paddingTop: '10px' }}>
-          <h1 className="header1-design">Todo List</h1>
+          <h1 className="header1-design">Menu</h1>
+        </Row>
+        <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+          <Categorizer
+            data={itemData}
+            type="menuItem"
+            setAction={setAction}
+            setName={setName}
+            setImageLink={setImageLink}
+            setCategory={setCategory}
+            setInfo={setInfo}
+            setPrice={setPrice}
+            setId={setId}
+          />
         </Row>
         <Row style={{ paddingTop: '20px' }}>
-          <hr style={{ color: '#ffffff' }} />
+          <hr style={{ color: '#000000' }} />
+        </Row>
+        <Row style={{ paddingTop: '30px' }}>
+          <h1 className="header1-design">Add New Menu Item</h1>
+        </Row>
+        <Row style={{ paddingTop: '20px' }}>
+          <NewItemForm
+            setAction={setAction}
+            setName={setName}
+            setImageLink={setImageLink}
+            setCategory={setCategory}
+            setInfo={setInfo}
+            setPrice={setPrice}
+            setId={setId}
+          />
+        </Row>
+        <Row style={{ paddingTop: '20px' }}>
+          <hr style={{ color: '#000000' }} />
         </Row>
         <Row style={{ paddingTop: '20px' }}>
           <Button className="button" href="/menu">Preview menu</Button>
         </Row>
+        <Container style={{ paddingTop: '60px' }} />
       </Col>
     </Container>
   );
 }
-
-// <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-//   <CardList
-//     data={itemData}
-//     type="todoItem"
-//     setAction={setAction}
-//     setName={setName}
-//     setImageLink={setImageLink}
-//     setCategory={setCategory}
-//     setInfo={setInfo}
-//     setPrice={setPrice}
-//     setId={setId}
-//   />
-// </Row>

@@ -3,31 +3,35 @@ import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import ItemCard from './ItemCard';
-import LoaderCard from './loading/LoaderCard';
 
 function CardList({
-  data, type, setAction, setTask, setId,
+  data,
+  type,
+  setAction,
+  setName,
+  setImageLink,
+  setCategory,
+  setInfo,
+  setPrice,
+  setId,
 }) {
   let listCards = <div />;
-  if (data) {
-    listCards = data.todoList.map((item) => {
+  if (data || false) {
+    listCards = data.map((item) => {
       const dataObjStr = JSON.stringify(item);
-      if (type === 'todoItem') {
+      if (type === 'menuItem') {
         return (
           <React.Fragment key={item.id}>
             <ItemCard
               jsonData={dataObjStr}
               setAction={setAction}
-              setTask={setTask}
+              setName={setName}
+              setImageLink={setImageLink}
+              setCategory={setCategory}
+              setInfo={setInfo}
+              setPrice={setPrice}
               setId={setId}
             />
-          </React.Fragment>
-        );
-      }
-      if (type === 'loader') {
-        return (
-          <React.Fragment key={item.id}>
-            <LoaderCard />
           </React.Fragment>
         );
       }
@@ -36,14 +40,14 @@ function CardList({
   } else {
     return (
       <Container fluid>
-        <h3 className="header5-design">No items in the list</h3>
+        <h3 className="header5-design">Oops! There are no menu items in the list.</h3>
       </Container>
     );
   }
-  if (data.todoList.length === 0) {
+  if (data.length === 0) {
     return (
       <Container fluid>
-        <h3 className="header5-design">No items in the list</h3>
+        <h3 className="header5-design">Oops! There are no menu items in the list.</h3>
       </Container>
     );
   }
@@ -55,16 +59,24 @@ function CardList({
 }
 
 CardList.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.instanceOf(Array).isRequired,
   type: PropTypes.string.isRequired,
   setAction: PropTypes.func,
-  setTask: PropTypes.func,
+  setName: PropTypes.func,
+  setImageLink: PropTypes.func,
+  setCategory: PropTypes.func,
+  setInfo: PropTypes.func,
+  setPrice: PropTypes.func,
   setId: PropTypes.func,
 };
 
 CardList.defaultProps = {
   setAction: null,
-  setTask: null,
+  setName: null,
+  setImageLink: null,
+  setCategory: null,
+  setInfo: null,
+  setPrice: null,
   setId: null,
 };
 
