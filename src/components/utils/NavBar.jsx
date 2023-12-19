@@ -10,7 +10,7 @@ function NavBar({ url }) {
       <Container fluid>
         <Navbar.Brand className="text-navbar-title">
           <Nav.Link className="text-navbar" href="/menu">
-            <h1 className="header-design-navbar"><b>Cafe Deliciae Menu</b></h1>
+            <h1 className="header-design-navbar"><b>Cafe Luxuriae Menu</b></h1>
           </Nav.Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
