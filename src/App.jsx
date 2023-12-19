@@ -21,7 +21,7 @@ function App() {
       <div className="d-flex flex-column" style={{ minHeight: '90vh', background: '#EFEFEF', paddingTop: '10vh' }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/menueditor" />} />
+            <Route path="/" element={<Navigate to="/menu" />} />
             <Route path="menueditor" element={<HomePageEditor />} />
             <Route path="menu/:id" element={<MenuItemPage />} />
             <Route path="menu" element={<HomePage />} />
