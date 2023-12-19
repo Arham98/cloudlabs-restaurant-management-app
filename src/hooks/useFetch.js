@@ -113,7 +113,8 @@ export default function useFetch(backendOperation, queryAttributesStr) {
         // Saving retrieved data
         setData(content);
       } catch (error) {
-        console.log(error.message);
+        // eslint-disable-next-line no-console
+        console.error(error.message);
         setData({ error: `${error}` });
         setSuccess(false);
       } finally {

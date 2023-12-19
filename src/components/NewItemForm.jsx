@@ -15,7 +15,7 @@ export default function NewItemForm({
   setPrice,
   setId,
 }) {
-  // Function to update GraphQL query parameters to trigger API call to add course
+  // Function call to the addItem action to add a new resturant menu item
   const addItem = (event) => {
     event.preventDefault();
     if (event.target[0].value

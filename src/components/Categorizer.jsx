@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import CardList from './CardList';
-// import ItemCard from './ItemCard';
-// import LoaderCard from './loading/LoaderCard';
 
 function Categorizer({
   data,
@@ -22,69 +21,51 @@ function Categorizer({
     const groupedMenuData = Object.groupBy(data, (item) => item.category);
     listSections = Object.keys(groupedMenuData).map((groupName) => (
       <React.Fragment key={groupName}>
-        <h3 className="header3-design">{groupName}</h3>
-        <CardList
-          data={groupedMenuData[`${groupName}`]}
-          type={type}
-          setAction={setAction}
-          setName={setName}
-          setImageLink={setImageLink}
-          setCategory={setCategory}
-          setInfo={setInfo}
-          setPrice={setPrice}
-          setId={setId}
-        />
+        <Row style={{ paddingTop: '10px' }}>
+          <h3 className="header3-design">{groupName}</h3>
+          <Container>
+            <hr style={{ color: '#000011' }} />
+          </Container>
+        </Row>
+        <Row style={{ paddingTop: '10px' }}>
+          <CardList
+            data={groupedMenuData[`${groupName}`]}
+            type={type}
+            setAction={setAction}
+            setName={setName}
+            setImageLink={setImageLink}
+            setCategory={setCategory}
+            setInfo={setInfo}
+            setPrice={setPrice}
+            setId={setId}
+          />
+        </Row>
       </React.Fragment>
     ));
-    // <ItemCard
-    //   jsonData={dataObjStr}
-    //   setAction={setAction}
-    //   setName={setName}
-    //   setImageLink={setImageLink}
-    //   setCategory={setCategory}
-    //   setInfo={setInfo}
-    //   setPrice={setPrice}
-    //   setId={setId}
-    // />
-    // let listCards = <div />;
-    // listCards = data.menuList.map((item) => {
-    //   const dataObjStr = JSON.stringify(item);
-    //   if (type === 'menuItem') {
-    //     return (
-    //       <React.Fragment key={item.id}>
-    //         <ItemCard
-    //           jsonData={dataObjStr}
-    //           setAction={setAction}
-    //           setName={setName}
-    //           setImageLink={setImageLink}
-    //           setCategory={setCategory}
-    //           setInfo={setInfo}
-    //           setPrice={setPrice}
-    //           setId={setId}
-    //         />
-    //       </React.Fragment>
-    //     );
-    //   }
-    //   return (<div />);
-    // });
   } else {
     return (
-      <Container fluid>
-        <h3 className="header5-design">Oops! There are no menu items in the list.</h3>
-      </Container>
+      <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+        <Container fluid>
+          <h3 className="header5-design">Oops! There are no menu items in the list.</h3>
+        </Container>
+      </Row>
     );
   }
   if (data.length === 0) {
     return (
-      <Container fluid>
-        <h3 className="header5-design">Oops! There are no menu items in the list.</h3>
-      </Container>
+      <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+        <Container fluid>
+          <h3 className="header5-design">Oops! There are no menu items in the list.</h3>
+        </Container>
+      </Row>
     );
   }
   return (
-    <Col className="flex-col">
-      { listSections }
-    </Col>
+    <Row className="flex-row">
+      <Col className="flex-col">
+        { listSections }
+      </Col>
+    </Row>
   );
 }
 

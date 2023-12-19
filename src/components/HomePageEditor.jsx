@@ -19,11 +19,11 @@ export default function HomePageEditor() {
   const [id, setId] = useState('');
 
   const queryParams = {
-    name: `${name}`,
-    imageLink: `${imageLink}`,
-    category: `${category}`,
-    info: `${info}`,
-    id: `${id}`,
+    name,
+    imageLink,
+    category,
+    info,
+    id,
     price,
   };
 
@@ -38,7 +38,7 @@ export default function HomePageEditor() {
   );
 
   // Function to re-update GraphQL query parameters fetch list of items
-  // when either a course had been added, edited, or deleted
+  // when either a restaurant menu item has been added, edited, or deleted
   useEffect(() => {
     if (!callLoading && action !== 'getAllItems') {
       setAction('getAllItems');
@@ -51,6 +51,7 @@ export default function HomePageEditor() {
     );
   } if (!(callSuccess)) {
     if (!itemData.success) {
+      // eslint-disable-next-line no-console
       console.error(`The following errors were encountered:\nError -> ${itemData.error}\n`);
       return (
         <PageError errorMessage={`The following errors were encountered:\nError -> ${itemData.error}\n`} />
@@ -69,24 +70,26 @@ export default function HomePageEditor() {
     );
   }
   return (
-    <Container>
+    <Container style={{ paddingTop: '5vh' }}>
       <Col className="align-items-center">
         <Row style={{ paddingTop: '10px' }}>
-          <h1 className="header1-design">Menu</h1>
+          <Button className="button" href="/menu">
+            <p style={{ color: 'white', fontSize: '30px' }}>
+              Preview Menu
+            </p>
+          </Button>
         </Row>
-        <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-          <Categorizer
-            data={itemData}
-            type="menuItem"
-            setAction={setAction}
-            setName={setName}
-            setImageLink={setImageLink}
-            setCategory={setCategory}
-            setInfo={setInfo}
-            setPrice={setPrice}
-            setId={setId}
-          />
-        </Row>
+        <Categorizer
+          data={itemData}
+          type="menuEditItem"
+          setAction={setAction}
+          setName={setName}
+          setImageLink={setImageLink}
+          setCategory={setCategory}
+          setInfo={setInfo}
+          setPrice={setPrice}
+          setId={setId}
+        />
         <Row style={{ paddingTop: '20px' }}>
           <hr style={{ color: '#000000' }} />
         </Row>
@@ -106,9 +109,6 @@ export default function HomePageEditor() {
         </Row>
         <Row style={{ paddingTop: '20px' }}>
           <hr style={{ color: '#000000' }} />
-        </Row>
-        <Row style={{ paddingTop: '20px' }}>
-          <Button className="button" href="/menu">Preview menu</Button>
         </Row>
         <Container style={{ paddingTop: '60px' }} />
       </Col>

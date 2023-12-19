@@ -51,8 +51,8 @@
 
 .navbar-color {
   min-height: 10vh;
-  color: #FC4A1F;
-  background-color: #FC4A1F;
+  color: white;
+  background-image: linear-gradient(to bottom right, #FC4A1F, #AC0D57);
 }
 
 .footer-design {
@@ -65,26 +65,25 @@
 }
 
 .button {
-  background-color:#FC4A1F;
+  background-image: linear-gradient(to right, #FC4A1F, #AC0D57);
   transition-duration: 0.4s;
   color: white;
-  /* min-height:30px; */
   border:none;
 }
 
 .button:hover {
-  background-color: #AC0D57 !important;
+  background-image: linear-gradient(to right, #e42e00, #86003f) !important;
   color: white !important;
 }
 
 .button:active {
-  background-color:#FC4A1F;
+  background-image: linear-gradient(to right, #FC4A1F, #AC0D57);
   color: #ffffff;
   border:none;
 }
 
 .button:focus {
-  background-color:#FC4A1F;
+  background-image: linear-gradient(to right, #FC4A1F, #AC0D57);
   color: #ffffff;
   border:none;
 }
@@ -123,48 +122,48 @@
 
 .card-header {
   background-color: #FC4A1F;
-  color: #ffffff;
+  border-color: #D3D3D3;
+  font-size: 30px;
+  color: #FFFFFF;
 }
 
 .card {
   background-color: #EFEFEF;
-  border-color: #525252;
+  border-color: #D3D3D3;
   border-radius: 0.5em;
-  color: white;
+  color: black;
 }
 
 .card-body {
-  border-color: #525252;
+  border-color: #D3D3D3;
+  font-size: 20px;
 }
 
 .modal-header {
   background-color: #FC4A1F;
-  color: #ffffff;
+  color: white;
 }
 
 .modal {
-  border-color: #525252;
+  border-color: grey;
   border-radius: 0.5em;
   color: white;
 }
 
 .modal-content {
-  background-color: #2D2926FF;
-  border-color: #525252;
+  background-color: #EFEFEF;
+  border-color: grey;
   border-radius: 0.5em;
-  color: white;
+  color: black;
 }
 
 .modal-body {
-  border-color: #525252;
-  background-color: #2D2926FF;
-  /* color: #ffffff; */
+  border-color: grey;
+  background-color: #EFEFEF;
 }
 
 .modal-footer {
-  /* border-color: #525252; */
-  background-color: #2D2926FF;
-  /* color: #ffffff; */
+  background-color: #EFEFEF;
 }
 
 .list-group-item-card {
@@ -221,15 +220,23 @@
 
 .header1-design {
   color: #FC4A1F !important;
+  font-size: 60px;
+}
+
+.header-design-navbar {
+  color: white !important;
+  font-size: 60px;
 }
 
 .header3-design {
   color: #FC4A1F !important;
   padding-top: 20px;
+  font-size: 45px;
 }
 
 .header5-design {
   color: #FC4A1F !important;
+  font-size: 30px;
 }
 
 .card-genre-design {
@@ -283,12 +290,12 @@
 }
 
 .text-navbar {
-  color: #ffffff !important;
+  color: #FFFFFF !important;
   font-size: 20px;
 }
 
 .text-navbar-title {
-  color: #ffffff !important;
+  color: #FFFFFF !important;
   font-size: 40px;
 }
 

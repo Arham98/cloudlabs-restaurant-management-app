@@ -9,8 +9,8 @@ import {
 } from 'react-router-dom';
 import keys from './hooks/keys.json';
 import NavBar from './components/utils/NavBar';
-// import Footer from './components/utils/Footer';
 import HomePageEditor from './components/HomePageEditor';
+import MenuItemPage from './components/MenuItemPage';
 import HomePage from './components/HomePage';
 import NotFound from './components/errorPages/NotFound';
 
@@ -21,8 +21,9 @@ function App() {
       <div className="d-flex flex-column" style={{ minHeight: '90vh', background: '#EFEFEF', paddingTop: '10vh' }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/editor" />} />
-            <Route path="editor" element={<HomePageEditor />} />
+            <Route path="/" element={<Navigate to="/menueditor" />} />
+            <Route path="menueditor" element={<HomePageEditor />} />
+            <Route path="menu/:id" element={<MenuItemPage />} />
             <Route path="menu" element={<HomePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -32,5 +33,4 @@ function App() {
   );
 }
 
-/* <Footer /> */
 export default App;

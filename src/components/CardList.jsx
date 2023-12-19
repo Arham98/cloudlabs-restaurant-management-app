@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import ItemCard from './ItemCard';
+import ItemCardPreview from './ItemCardPreview';
 
 function CardList({
   data,
@@ -19,10 +20,26 @@ function CardList({
   if (data || false) {
     listCards = data.map((item) => {
       const dataObjStr = JSON.stringify(item);
-      if (type === 'menuItem') {
+      if (type === 'menuEditItem') {
         return (
           <React.Fragment key={item.id}>
             <ItemCard
+              jsonData={dataObjStr}
+              setAction={setAction}
+              setName={setName}
+              setImageLink={setImageLink}
+              setCategory={setCategory}
+              setInfo={setInfo}
+              setPrice={setPrice}
+              setId={setId}
+            />
+          </React.Fragment>
+        );
+      }
+      if (type === 'menuItem') {
+        return (
+          <React.Fragment key={item.id}>
+            <ItemCardPreview
               jsonData={dataObjStr}
               setAction={setAction}
               setName={setName}
@@ -52,9 +69,9 @@ function CardList({
     );
   }
   return (
-    <Col className="flex-col">
+    <Row className="flex-row">
       { listCards }
-    </Col>
+    </Row>
   );
 }
 
