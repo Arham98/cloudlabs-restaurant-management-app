@@ -51,41 +51,50 @@ export default function HomePage() {
       </Container>
     );
   }
-  // eslint-disable-next-line no-console
-  console.log(itemData);
+
   return (
-    <Container fluid>
-      <Row style={{ paddingTop: '5vh' }} />
+    <Container fluid style={{ paddingLeft: '5vh', paddingRight: '5vh' }}>
+      <Row style={{ paddingTop: '7vh' }} />
       <Row className="flex-row">
-        <Col className="col-auto" style={{ maxWidth: '50vh' }}>
+        <Col className="col-auto d-flex justify-content-start">
           <Image
             className="img-fluid"
             src={itemData.imageLink}
             alt={itemData.name}
             style={{
-              // width: '25%',
-              height: '100%',
+              width: '25%',
+              height: 'auto',
               borderRadius: '50%',
               overflow: 'hidden',
             }}
           />
-        </Col>
-        <Col className="d-flex align-items-center">
-          <Row>
-            <h1 className="header1-design">{itemData.name}</h1>
-            <h3>
-              <span style={{ color: '#FC4A1F' }}>Price: </span>
-              {` $${itemData.price}`}
-            </h3>
-            <h3>
-              <span style={{ color: '#FC4A1F' }}>Category: </span>
-              {itemData.category}
-            </h3>
-            <h5 className="header5-design">Details:</h5>
-            <p>
-              {itemData.info}
-            </p>
-          </Row>
+          <Col className="d-flex align-items-center" style={{ paddingLeft: '1%' }}>
+            <Row>
+              <h1 className="header1-design">{itemData.name}</h1>
+              <h3 className="header3-design">
+                {'Price: '}
+                <span style={{ color: 'black', fontWeight: 'normal' }}>
+                  {' '}
+                  { `$${itemData.price}`}
+                </span>
+              </h3>
+              <h3 className="header3-design">
+                {'Category: '}
+                <span style={{ color: 'black', fontWeight: 'normal' }}>
+                  {' '}
+                  { `$${itemData.category}`}
+                </span>
+              </h3>
+              <h5 className="header5-design">
+                Details:
+                <br />
+                <span style={{ color: 'black', fontWeight: 'normal' }}>
+                  {' '}
+                  {itemData.info}
+                </span>
+              </h5>
+            </Row>
+          </Col>
         </Col>
       </Row>
     </Container>
