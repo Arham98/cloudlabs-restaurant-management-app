@@ -18,7 +18,20 @@ function Categorizer({
 }) {
   let listSections = <div />;
   if (data) {
-    const groupedMenuData = Object.groupBy(data, (item) => item.category);
+    // Custom GroupBy using reduce
+    const groupedMenuData = data.reduce((group, item) => {
+      if (!group[item.category]) {
+        // eslint-disable-next-line no-param-reassign
+        group[item.category] = [];
+        group[item.category].push(item);
+      } else {
+        group[item.category].push(item);
+      }
+      return group;
+    }, {});
+    // Alternative new way for groupby (not supported on all browsers including Safari)
+    // const groupedMenuData = Object.groupBy(data, (item) => item.category);
+
     listSections = Object.keys(groupedMenuData).map((groupName) => (
       <React.Fragment key={groupName}>
         <Row style={{ paddingTop: '10px' }}>
