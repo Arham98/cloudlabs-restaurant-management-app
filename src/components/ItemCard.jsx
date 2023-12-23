@@ -151,6 +151,7 @@ export default function ItemCard({
                 </Row>
               </Form>
             </Modal.Body>
+            <Modal.Footer />
           </Modal>
           <OverlayTrigger
             placement="bottom"
