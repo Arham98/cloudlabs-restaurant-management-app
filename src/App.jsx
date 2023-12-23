@@ -18,7 +18,8 @@ function App() {
   return (
     <>
       <NavBar url={keys.backendUrl} />
-      <div className="d-flex flex-column" style={{ minHeight: '90vh', background: '#EFEFEF', paddingTop: '10vh' }}>
+      <div style={{ padding: '10vh' }} />
+      <div className="d-flex flex-column" style={{ minHeight: '90vh', background: '#EFEFEF' }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Navigate to="/menu" />} />

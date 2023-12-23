@@ -82,7 +82,7 @@ export default function HomePage() {
                 {'Category: '}
                 <span style={{ color: 'black', fontWeight: 'normal' }}>
                   {' '}
-                  { `$${itemData.category}`}
+                  { `${itemData.category}`}
                 </span>
               </h3>
               <h5 className="header5-design">
