@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import PageError from './errorPages/PageError';
 import Loading from './loading/Loading';
 import useFetch from '../hooks/useFetch';
 import Categorizer from './Categorizer';
 import NewItemForm from './NewItemForm';
+import NavBar from './utils/NavBar';
 
 export default function HomePageEditor() {
   const [action, setAction] = useState('getAllItems');
@@ -70,34 +70,14 @@ export default function HomePageEditor() {
     );
   }
   return (
-    <Container style={{ paddingTop: '5vh' }}>
-      <Col className="align-items-center">
-        <Row style={{ paddingTop: '10px' }}>
-          <Button className="button" href="/menu">
-            <p style={{ color: 'white', fontSize: '30px' }}>
-              Preview Menu
-            </p>
-          </Button>
-        </Row>
-        <Categorizer
-          data={itemData}
-          type="menuEditItem"
-          setAction={setAction}
-          setName={setName}
-          setImageLink={setImageLink}
-          setCategory={setCategory}
-          setInfo={setInfo}
-          setPrice={setPrice}
-          setId={setId}
-        />
-        <Row style={{ paddingTop: '20px' }}>
-          <hr style={{ color: '#000000' }} />
-        </Row>
-        <Row style={{ paddingTop: '30px' }}>
-          <h1 className="header1-design">Add New Menu Item</h1>
-        </Row>
-        <Row style={{ paddingTop: '20px' }}>
-          <NewItemForm
+    <Container fluid>
+      <NavBar type="editor" />
+      <div style={{ paddingBottom: '26vh' }} />
+      <Container style={{ paddingTop: '5vh' }}>
+        <Col className="align-items-center">
+          <Categorizer
+            data={itemData}
+            type="menuEditItem"
             setAction={setAction}
             setName={setName}
             setImageLink={setImageLink}
@@ -106,12 +86,29 @@ export default function HomePageEditor() {
             setPrice={setPrice}
             setId={setId}
           />
-        </Row>
-        <Row style={{ paddingTop: '20px' }}>
-          <hr style={{ color: '#000000' }} />
-        </Row>
-        <Container style={{ paddingTop: '60px' }} />
-      </Col>
+          <Row style={{ paddingTop: '20px' }}>
+            <hr style={{ color: '#000000' }} />
+          </Row>
+          <Row style={{ paddingTop: '30px' }}>
+            <h1 className="header1-design">Add New Menu Item</h1>
+          </Row>
+          <Row style={{ paddingTop: '20px' }}>
+            <NewItemForm
+              setAction={setAction}
+              setName={setName}
+              setImageLink={setImageLink}
+              setCategory={setCategory}
+              setInfo={setInfo}
+              setPrice={setPrice}
+              setId={setId}
+            />
+          </Row>
+          <Row style={{ paddingTop: '20px' }}>
+            <hr style={{ color: '#000000' }} />
+          </Row>
+          <Container style={{ paddingTop: '60px' }} />
+        </Col>
+      </Container>
     </Container>
   );
 }

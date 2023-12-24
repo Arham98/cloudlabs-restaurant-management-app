@@ -50,7 +50,6 @@
 }
 
 .navbar-color {
-  min-height: 10vh;
   color: white;
   background-image: linear-gradient(to bottom right, #FC4A1F, #AC0D57);
 }
@@ -88,29 +87,26 @@
   border:none;
 }
 
-.delete-button {
-  background-color:#950101;
-  margin-right: 10px;
-  margin-top: 10px;
+.navbar-button {
+  background-image: linear-gradient(to right, #ec9233, #fd3030);
   transition-duration: 0.4s;
   color: white;
-  min-height:28px;
   border:none;
 }
 
-.delete-button:hover {
-  background-color: #3D0000 !important;
+.navbar-button:hover {
+  background-image: linear-gradient(to right, #e65d07, #9c0505) !important;
   color: white !important;
 }
 
-.delete-button:active {
-  background-color:#950101;
+.navbar-button:active {
+  background-image: linear-gradient(to right, #ecc433, #fd3030);
   color: #ffffff;
   border:none;
 }
 
-.delete-button:focus {
-  background-color:#950101;
+.navbar-button:focus {
+  background-image: linear-gradient(to right, #ecc433, #fd3030);
   color: #ffffff;
   border:none;
 }

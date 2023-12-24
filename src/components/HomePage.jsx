@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import PageError from './errorPages/PageError';
 import Loading from './loading/Loading';
 import useFetch from '../hooks/useFetch';
 import Categorizer from './Categorizer';
+import NavBar from './utils/NavBar';
 
 export default function HomePage() {
   const [action, setAction] = useState('getAllItems');
@@ -40,22 +39,19 @@ export default function HomePage() {
     );
   }
   return (
-    <Container style={{ paddingTop: '5vh' }}>
-      <Col className="align-items-center">
-        <Row style={{ paddingTop: '10px' }}>
-          <Button className="button" href="/menueditor">
-            <p style={{ color: 'white', fontSize: '30px' }}>
-              Edit Menu
-            </p>
-          </Button>
-        </Row>
-        <Categorizer
-          data={itemData}
-          type="menuItem"
-          setAction={setAction}
-        />
-        <Container style={{ paddingTop: '60px' }} />
-      </Col>
+    <Container fluid>
+      <NavBar type="preview" />
+      <div style={{ paddingBottom: '26vh' }} />
+      <Container style={{ paddingTop: '5vh' }}>
+        <Col className="align-items-center">
+          <Categorizer
+            data={itemData}
+            type="menuItem"
+            setAction={setAction}
+          />
+          <Container style={{ paddingTop: '60px' }} />
+        </Col>
+      </Container>
     </Container>
   );
 }

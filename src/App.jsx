@@ -8,7 +8,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import keys from './hooks/keys.json';
-import NavBar from './components/utils/NavBar';
+import Footer from './components/utils/Footer';
 import HomePageEditor from './components/HomePageEditor';
 import MenuItemPage from './components/MenuItemPage';
 import HomePage from './components/HomePage';
@@ -17,8 +17,6 @@ import NotFound from './components/errorPages/NotFound';
 function App() {
   return (
     <>
-      <NavBar url={keys.backendUrl} />
-      <div style={{ padding: '10vh' }} />
       <div className="d-flex flex-column" style={{ minHeight: '90vh', background: '#EFEFEF' }}>
         <BrowserRouter>
           <Routes>
@@ -30,6 +28,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      <Footer url={keys.backendUrl} />
     </>
   );
 }
