@@ -107,11 +107,20 @@ export default function useFetch(backendOperation, queryAttributesStr) {
           }
         }
 
-        // Extracting the content body
-        const content = await response.json();
+        // Identify and extract data from response through either text() or json()
+        if (response.headers.get('content-type').includes('application/json')) {
+          const content = await response.json();
+          setData(content);
+        } else {
+          const content = await response.text();
+          setData(content);
+        }
 
-        // Saving retrieved data
-        setData(content);
+        //         // Extracting the content body
+        //         const content = await response.json();
+        //
+        //         // Saving retrieved data
+        //         setData(content);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error.message);
