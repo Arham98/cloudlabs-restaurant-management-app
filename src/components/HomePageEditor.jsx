@@ -60,7 +60,7 @@ export default function HomePageEditor() {
     return (
       <PageError errorMessage="Oops! Something went wrong" />
     );
-  } if (!itemData.length) {
+  } if (typeof itemData === 'string' || itemData instanceof String) {
     return (
       <Container className="center-container">
         <pre>

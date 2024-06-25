@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import logo from '../../images/Logo.png';
 
 export default function NavBar({ type }) {
   return (
@@ -13,11 +14,23 @@ export default function NavBar({ type }) {
           <Nav.Link className="text-navbar" href="/menu">
             {(type === '')
               && (
-                <h1 className="header-design-navbar"><b>Cafe Luxuriae</b></h1>
+                <h1 className="header-design-navbar">
+                  <b>
+                    <img alt="" src={logo} height="100vh" />
+                    {' '}
+                    Cafe Luxuriae
+                  </b>
+                </h1>
               )}
             {(type !== '')
               && (
-                <h1 className="header-design-navbar"><b>Cafe Luxuriae Menu</b></h1>
+                <h1 className="header-design-navbar">
+                  <b>
+                    <img alt="" src={logo} height="100vh" />
+                    {' '}
+                    Cafe Luxuriae Menu
+                  </b>
+                </h1>
               )}
           </Nav.Link>
         </Navbar.Brand>

@@ -10,6 +10,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import imgPlaceholder from '../images/imgPlaceholder.png';
 
 export default function ItemCard({
   jsonData,
@@ -29,6 +30,11 @@ export default function ItemCard({
   const handleEditShow = () => setEditShow(true);
 
   const categoryMenuData = JSON.parse(jsonData);
+  const [imgLink, setImgLink] = useState(categoryMenuData.imageLink);
+
+  const handleImgError = () => {
+    setImgLink(imgPlaceholder);
+  };
 
   // Function to call the deleteItem action
   const deleteMenuItemMethod = () => {
@@ -60,8 +66,9 @@ export default function ItemCard({
       <Card>
         <Card.Img
           variant="top"
-          src={categoryMenuData.imageLink}
+          src={imgLink}
           alt="Image Not Found"
+          onError={handleImgError}
         />
         <Card.Header>{categoryMenuData.name}</Card.Header>
         <Card.Body>
@@ -95,7 +102,7 @@ export default function ItemCard({
             </Modal.Header>
             <Modal.Body>
               <Form onSubmit={editMenuItemMethod}>
-                <img src={categoryMenuData.imageLink} className="img-fluid" alt={categoryMenuData.name} />
+                <img src={imgLink} className="img-fluid" alt={categoryMenuData.name} />
                 <h3 style={{ color: '#E84545', paddingTop: '10px' }}>Edit Name</h3>
                 <InputGroup className="mb-3">
                   <Form.Control

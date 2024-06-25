@@ -118,20 +118,20 @@
 
 .card-header {
   background-color: #FC4A1F;
-  border-color: #D3D3D3;
+  border-color: #a6a6a6;
   font-size: 30px;
   color: #FFFFFF;
 }
 
 .card {
-  background-color: #EFEFEF;
-  border-color: #D3D3D3;
+  background-color: white;
+  border-color: #a6a6a6;
   border-radius: 0.5em;
   color: black;
 }
 
 .card-body {
-  border-color: #D3D3D3;
+  border-color: white;
   font-size: 20px;
 }
 
